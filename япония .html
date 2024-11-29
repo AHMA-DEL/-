@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сукэми - Японский Бог</title>
+    <!-- Подключаем Font Awesome для иконок соц. сетей -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Lucida Console', Monaco, monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: url('япония.jpg'); /* Замените на ваш фон */
+            background-size: cover;
+            background-position: center;
+            color: #ff780a;
+            overflow-x: hidden;
+            transition: background-color 1s ease;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Бегущая строка */
+        .marquee {
+            font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffd700;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .marquee p {
+            display: inline-block;
+            animation: marqueeAnimation 10s linear infinite;
+            margin: 0;
+            cursor: pointer;
+        }
+        @keyframes marqueeAnimation {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Стили для кнопки "Все о Японии" */
+        .japan-button {
+            background-color: #ffd700;
+            color: #000;
+            padding: 15px 25px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .japan-button:hover {
+            background-color: #ffcc00;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        nav a {
+            color: #fff;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 20px;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #ffd700;
+            transition: width 0.3s, left 0.3s;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Основной контент */
+        main {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        h2 {
+            color: #ffd700;
+            font-size: 1.8rem;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Изображения */
+        .image-container {
+            flex: 1;
+            margin-right: 20px;
+            position: relative;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Описание */
+        .description {
+            flex: 2;
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 30px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #6200ff;
+        }
+        .social-links i {
+            padding: 10px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s;
+        }
+        .social-links i:hover {
+            background-color: #4c00ff;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Эффект при нажатии на панели навигации */
+        nav a:active {
+            transform: scale(0.95);
+        }
+
+        /* Эффекты для социальных ссылок */
+        .social-links i {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .social-links i:hover {
+            background-color: #00c3ff;
+        }
+
+        /* Эффект с мышью */
+        #mouse-trail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #5eff00;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        /* Стили для теста */
+        .quiz-container {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            color: #06f119;
+        }
+        .quiz-container h2 {
+            text-align: center;
+        }
+        .quiz-container .question {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        .quiz-container .answer {
+            background-color: #eed859;
+            color: #000;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .quiz-container .answer:hover {
+            background-color: #f8df7a;
+        }
+
+        /* Эффект фейерверков */
+        .fireworks {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+        .fireworks span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f31f89;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(5); opacity: 0; }
+        }
+
+        .check-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #f0e08a;
+            color: #000;
+            font-size: 1.2rem;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .check-btn:hover {
+            background-color: #fce89c;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Сукэми - Японский Бог</h1>
+    <!-- Бегущая строка -->
+    <div class="marquee" id="marquee">
+        <p>Купить тур по Японии - Купить билет в Японию</p>
+    </div>
+</header>
+
+<!-- Главное меню -->
+<nav>
+    <a href="#about">О Сукэми</a>
+    <a href="#temple">Храм в Нара</a>
+    <a href="#kyoto-temple">Храм в Киото</a>
+    <a href="#social">Наши социальные сети</a>
+</nav>
+
+<main>
+    <!-- Раздел "О Боге Сукэми" -->
+    <section id="about" class="content">
+        <div class="image-container">
+            <img src="c:\Users\Professional\Downloads\богиня.webp" alt="Сага Сукэми"> <!-- Замените на путь к изображению Саги Сукэми -->
+        </div>
+        <div class="description">
+            <h2>О Сукэми</h2>
+            <p>Сукэми (или Сукэми-но Ками) — это древнее японское божество, которое олицетворяет очищение, цикличность жизни и возрождение. Сукэми часто ассоциируется с природными силами, особенно с потоками воды и природными катастрофами, такими как наводнения, которые были важной частью японской мифологии. Сукэми также символизирует смену времен года, особенно весной, когда природа обновляется.</p>
+        </div>
+    </section>
+
+    <!-- Раздел "Храм Сукэми" -->
+    <section id="temple" class="content">
+        <div class="image-container">
+            <img src="c:\Users\Professional\Downloads\нара.jpg" alt="Храм Сукэми"> <!-- Замените на путь к изображению храма -->
+        </div>
+        <div class="description">
+            <h2>Храм Сукэми в Нара</h2>
+            <p>Первый храм, посвященный Сукэми, был построен в древней японской столице Нара в 1100 году. Этот храм стал важным центром религиозной жизни региона, привлекая паломников, которые искали защиты от природных катастроф и молились за благополучие урожая. Храм известен своей архитектурой и статуей бога Сукэми, которая символизирует связь между человеком и природой.</p>
+        </div>
+    </section>
+
+    <!-- Раздел "Храм в Киото" -->
+    <section id="kyoto-temple" class="content">
+        <div class="image-container">
+            <img src="c:\Users\Professional\Downloads\храм киото .jpg" alt="Храм Сукэми в Киото"> <!-- Замените на путь к изображению храма в Киото -->
+        </div>
+        <div class="description">
+            <h2>Храм Сукэми в Киото</h2>
+            <p>Этот храм был построен в 1400 году и стал важным религиозным центром в Киото. Здесь поклонялись Сукэми, прося его защиты и благословения на урожай. Храм отличается своей архитектурой и красивыми садами, символизирующими природу и ее цикличность.</p>
+        </div>
+    </section>
+
+    <!-- Кнопка "Все о Японии" -->
+    <div class="content">
+        <a href="c:\Users\Professional\Downloads\Без названия.htm" class="japan-button" target="_blank">Все о Японии</a>
+    </div>
+
+    <!-- Раздел социальных сетей -->
+    <section id="social" class="content">
+        <h2>Социальные сети</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com" target="_blank">
+                <i class="fab fa-facebook-f"></i> <!-- Иконка Facebook -->
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <i class="fab fa-instagram"></i> <!-- Иконка Instagram -->
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <i class="fab fa-twitter"></i> <!-- Иконка Twitter -->
+            </a>
+        </div>
+    </section>
+
+    <!-- Тест -->
+    <div class="quiz-container">
+        <h2>Тест о Японии</h2>
+        <div class="question">
+            <p>1. Кто является японским богом возрождения?</p>
+            <div class="answer" onclick="checkAnswer('correct', 'Вы выбрали: Сукэми')">Сукэми</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Аматэрасу')">Аматэрасу</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Фудзин')">Фудзин</div>
+        </div>
+        <div class="question">
+            <p>2. Где находится храм Сукэми, построенный в 1100 году?</p>
+            <div class="answer" onclick="checkAnswer('correct', 'Вы выбрали: Нара')">Нара</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Киото')">Киото</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Осака')">Осака</div>
+        </div>
+        <div class="question">
+            <p>3. Когда был построен храм Сукэми в Киото?</p>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: 1500')">1500</div>
+            <div class="answer" onclick="checkAnswer('correct', 'Вы выбрали: 1400')">1400</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: 1200')">1200</div>
+        </div>
+        <div class="question">
+            <p>4. Как называется японское божество, символизирующее природные катастрофы?</p>
+            <div class="answer" onclick="checkAnswer('correct', 'Вы выбрали: Сукэми')">Сукэми</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Ицукусима')">Ицукусима</div>
+            <div class="answer" onclick="checkAnswer('incorrect', 'Вы выбрали: Тайдзин')">Тайдзин</div>
+        </div>
+
+        <!-- Кнопка проверки ответов -->
+        <button class="check-btn" onclick="checkAllAnswers()">Проверить ответы</button>
+
+        <!-- Результат -->
+        <div id="result"></div>
+    </div>
+
+    <!-- Эффект с фейерверками -->
+    <div class="fireworks" id="fireworks"></div>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Информация о японских богах</p>
+</footer>
+
+<!-- Эффект с мышью -->
+<div id="mouse-trail"></div>
+
+<script>
+    let correctAnswers = 0; // Счётчик правильных ответов
+
+    // Функция для проверки ответов на тест
+    function checkAnswer(answer, message) {
+        const result = document.getElementById('result');
+        result.innerHTML = message;
+
+        if (answer === 'correct') {
+            result.style.color = 'green';
+            correctAnswers++; // Увеличиваем счётчик правильных ответов
+        } else {
+            result.style.color = 'red';
+        }
+    }
+
+    // Функция для проверки всех ответов
+    function checkAllAnswers() {
+        const result = document.getElementById('result');
+        if (correctAnswers === 4) {
+            result.innerHTML = 'Поздравляем! Все ответы правильные!';
+            showFireworks(); // Показать фейерверки
+        } else {
+            result.innerHTML = `Вы выбрали ${correctAnswers} правильных ответов. Попробуйте ещё раз!`;
+        }
+        correctAnswers = 0; // Сбрасываем счётчик для следующего теста
+    }
+
+    // Функция для отображения фейерверков
+    function showFireworks() {
+        const fireworks = document.getElementById('fireworks');
+        fireworks.style.display = 'block'; // Показываем элемент с фейерверками
+        for (let i = 0; i < 30; i++) {
+            let firework = document.createElement('span');
+            firework.style.top = `${Math.random() * 100}vh`;
+            firework.style.left = `${Math.random() * 100}vw`;
+            fireworks.appendChild(firework);
+            setTimeout(() => {
+                firework.style.animation = 'explode 1s ease-out forwards';
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }, i * 100);
+        }
+    }
+
+    // Остановка бегущей строки при нажатии
+    const marquee = document.getElementById('marquee');
+    marquee.addEventListener('click', function() {
+        marquee.querySelector('p').style.animationPlayState = 'paused';
+    });
+
+    // Эффект с мышью
+    document.addEventListener('mousemove', function(e) {
+        const mouseTrail = document.getElementById('mouse-trail');
+        mouseTrail.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    });
+</script>
+
+</body>
+</html>
